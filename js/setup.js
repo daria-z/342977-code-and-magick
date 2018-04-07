@@ -14,30 +14,19 @@ var wizardTemplate = document.querySelector('#similar-wizard-template') // со�
     .content // обращаемся к обертке
     .querySelector('.setup-similar-item'); // и к элементам внутри обертки
 
+var wizards = []; // массив волшебники
 
-var wizards = [ // массив волшебники
-  {
-    name: WIZARD_NAMES[Math.floor(Math.random() * WIZARD_NAMES.length)] + ' ' + WIZARD_SURNAME[Math.floor(Math.random() * WIZARD_SURNAME.length)],
-    coatColor: COAT[Math.floor(Math.random() * COAT.length)],
-    eyesColor: EYES[Math.floor(Math.random() * EYES.length)]
-  },
-  {
-    name: WIZARD_NAMES[Math.floor(Math.random() * WIZARD_NAMES.length)] + ' ' + WIZARD_SURNAME[Math.floor(Math.random() * WIZARD_SURNAME.length)],
-    coatColor: COAT[Math.floor(Math.random() * COAT.length)],
-    eyesColor: EYES[Math.floor(Math.random() * EYES.length)]
-  },
-  {
-    name: WIZARD_NAMES[Math.floor(Math.random() * WIZARD_NAMES.length)] + ' ' + WIZARD_SURNAME[Math.floor(Math.random() * WIZARD_SURNAME.length)],
-    coatColor: COAT[Math.floor(Math.random() * COAT.length)],
-    eyesColor: EYES[Math.floor(Math.random() * EYES.length)]
-  },
-  {
-    name: WIZARD_NAMES[Math.floor(Math.random() * WIZARD_NAMES.length)] + ' ' + WIZARD_SURNAME[Math.floor(Math.random() * WIZARD_SURNAME.length)],
-    coatColor: COAT[Math.floor(Math.random() * COAT.length)],
-    eyesColor: EYES[Math.floor(Math.random() * EYES.length)]
+var createWizardLook = function () { // генерирует 4 объекта внешнего вида волшебников
+  for (var i = 0; i < 4; i++) {
+    var wizardLook = {
+      name: WIZARD_NAMES[Math.floor(Math.random() * WIZARD_NAMES.length)] + ' ' + WIZARD_SURNAME[Math.floor(Math.random() * WIZARD_SURNAME.length)],
+      coatColor: COAT[Math.floor(Math.random() * COAT.length)],
+      eyesColor: EYES[Math.floor(Math.random() * EYES.length)]
+    };
+
+    wizards.push(wizardLook); // записали в массив wizards
   }
-];
-
+};
 
 var renderWizard = function (wizard) { // функция для генирации волшебника из массива
   var wizardElement = wizardTemplate.cloneNode(true); // копируем теиплейт волшебника
@@ -50,16 +39,10 @@ var renderWizard = function (wizard) { // функция для генираци
 };
 
 var fragment = document.createDocumentFragment(); // создание фрагмента для вставки
+createWizardLook();
 for (var i = 0; i < wizards.length; i++) { // проходимся по всему массиву
   fragment.appendChild(renderWizard(wizards[i])); // добавляем элемент во фрагмент
 }
 similarListElement.appendChild(fragment); // добавляем сгенерированный фрагмент (все элементы разом) в DOM
 
 userDialog.querySelector('.setup-similar').classList.remove('hidden'); // показываем блок с похожими волшебниками
-
-
-// var #similar-wizard-template = {
-//   name: '',
-//   coatColor: '',
-//   eyesColor: ''
-// };
