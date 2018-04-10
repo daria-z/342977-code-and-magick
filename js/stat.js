@@ -45,13 +45,13 @@ window.renderStatistics = function (ctx, players, times) {
   var maxTime = getMaxElement(times);
 
   for (var i = 0; i < players.length; i++) {
-    var randomOpacity = Math.round(Math.random() / 0.1 + 1);
+    var randomOpacity = (Math.random() * 0.9 + 0.1).toFixed(1);
 
 
     if (players[i] === 'Вы') {
       ctx.fillStyle = 'red';
     } else {
-      ctx.fillStyle = '#004' + randomOpacity;
+      ctx.fillStyle = 'rgba(0, 0, 255, ' + randomOpacity + ')';
     }
 
     ctx.fillText(players[i], CLOUD_X + GAP * 4 + BAR_WIDTH * i + BAR_GAP * i, secondLineHight + BAR_HEIGHT + GAP * 7);
