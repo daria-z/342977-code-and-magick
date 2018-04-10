@@ -6,7 +6,7 @@ var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161
 var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 
 var userDialog = document.querySelector('.setup'); // создали переменную-блок настройки персонажа в которой будем работать
-userDialog.classList.remove('hidden'); // показали блок настройки персонажа
+// userDialog.classList.remove('hidden'); // показали блок настройки персонажа
 
 var similarListElement = userDialog.querySelector('.setup-similar-list'); //  переменная в которую сложим сгенерированные элементы
 
@@ -50,3 +50,15 @@ for (var i = 0; i < wizards.length; i++) { // проходимся по всем
 similarListElement.appendChild(fragment); // добавляем сгенерированный фрагмент (все элементы разом) в DOM
 
 userDialog.querySelector('.setup-similar').classList.remove('hidden'); // показываем блок с похожими волшебниками
+
+var setupOpen = document.querySelector('.setup-open');
+var setup = document.querySelector('.setup');
+var setupClose = setup.querySelector('.setup-close');
+
+setupOpen.addEventListener('click', function () {
+  setup.classList.remove('hidden');
+});
+
+setupClose.addEventListener('click', function () {
+  setup.classList.add('hidden');
+});
