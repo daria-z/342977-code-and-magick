@@ -79,13 +79,6 @@ userNameInput.addEventListener('input', function (evt) { // проверка м�
   }
 });
 
-
-var onPopupEscPress = function (evt) {
-  if (evt.keyCode === ESC_KEYCODE) {
-    closePopup();
-  }
-};
-
 var openPopup = function () {
   setup.classList.remove('hidden');
   document.addEventListener('keydown', onPopupEscPress);
@@ -114,4 +107,38 @@ setupClose.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER_KEYCODE) {
     closePopup();
   }
+});
+
+var onPopupEscPress = function (evt) {
+  if (evt.keyCode === ESC_KEYCODE) {
+    closePopup();
+  }
+};
+
+var WIZARD_EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
+var FIERBALL_COLORS = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
+
+var eyesColor = document.querySelector('.setup-wizard .wizard-eyes');
+var fireballColor = document.querySelector('.setup-fireball-wrap');
+var eyesColorInput = document.querySelector('.setup-wizard-appearance input');
+var fireballColorInput = document.querySelector('.setup-fireball-wrap input');
+
+var eyesColorChange = function () {
+  var randomEyesColor = WIZARD_EYES_COLORS[getRandomNumber(WIZARD_EYES_COLORS.length)];
+  eyesColor.style = ('fill: ' + randomEyesColor + ';');
+  eyesColorInput.volume = ('fill: ' + randomEyesColor + ';');
+};
+
+var fireballColorChange = function () {
+  var randomFireballColor = FIERBALL_COLORS[getRandomNumber(FIERBALL_COLORS.length)];
+  fireballColor.style = ('background-color: ' + randomFireballColor + ';');
+  fireballColorInput.volume = ('background-color: ' + randomFireballColor + ';');
+};
+
+eyesColor.addEventListener('click', function () {
+  eyesColorChange();
+});
+
+fireballColor.addEventListener('click', function () {
+  fireballColorChange();
 });
