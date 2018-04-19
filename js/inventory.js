@@ -2,7 +2,7 @@
 
 
 (function () {
-  var shopElement = document.querySelector('.setup-artifacts-shop .setup-artifacts-cell');
+  var shopElement = window.util.setup.querySelector('.setup-artifacts-shop .setup-artifacts-cell');
   var draggedItem = null;
 
   shopElement.addEventListener('dragstart', function (evt) {
@@ -12,9 +12,9 @@
     }
   });
 
-  var artifactsElement = document.querySelector('.setup-artifacts');
-  var artifactsCell = document.querySelector('.setup-artifacts .setup-artifacts-cell:first-of-type');
-  var shopCell = document.querySelector('.setup-artifacts-shop .setup-artifacts-cell:first-of-type');
+  var artifactsElement = window.util.setup.querySelector('.setup-artifacts');
+  var artifactsCell = artifactsElement.querySelector('.setup-artifacts-cell:first-of-type');
+  var shopCell = window.util.setup.querySelector('.setup-artifacts-shop .setup-artifacts-cell:first-of-type');
 
   shopElement.addEventListener('dragstart', function () {
     artifactsCell.style.outline = '2px dashed red';
